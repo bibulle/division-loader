@@ -1,9 +1,39 @@
 {
   "name": "division-loader",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "license": "MIT",
-  "scripts": {},
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "scripts": {
+    "lint": "nx workspace-lint && ng lint",
+    "release-patch": "standard-version --no-verify --commit-all --release-as patch",
+    "release-minor": "standard-version --no-verify --commit-all --release-as minor",
+    "release-major": "standard-version --no-verify --commit-all --release-as major",
+    "replace:version": "json -I -f libs/apis/src/lib/version.json -e \"this.version='`cat package.json | json version`';\" && git add libs/apis/src/lib/version.json"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "npm run replace:version"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint"
+    ],
+    "*.{css,scss,json,json5,md,js,ts}": [
+      "prettier --write"
+    ]
+  },
   "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.1.0",
     "@angular-eslint/eslint-plugin": "~15.0.0",
@@ -12,6 +42,7 @@
     "@angular/cli": "~15.1.0",
     "@angular/compiler-cli": "~15.1.0",
     "@angular/language-service": "~15.1.0",
+    "@commitlint/config-conventional": "^17.4.4",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@nrwl/angular": "^15.7.2",
@@ -28,14 +59,20 @@
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "autoprefixer": "^10.4.0",
+    "commitlint": "^17.4.4",
+    "dotenv": "^16.0.3",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
+    "husky": "^8.0.3",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "~12.2.3",
+    "json": "^11.0.0",
+    "lint-staged": "^13.1.2",
     "nx": "15.7.2",
     "postcss": "^8.4.5",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.4",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^3.0.2",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
