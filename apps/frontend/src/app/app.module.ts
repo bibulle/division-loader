@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { HttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {
-  MissingTranslationHandler,
-  MissingTranslationHandlerParams,
-  TranslateLoader,
-  TranslateModule,
-} from '@ngx-translate/core';
-import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
 import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
+import localeFr from '@angular/common/locales/fr';
+import { MissingTranslationHandler, MissingTranslationHandlerParams, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NavBarModule } from './nav-bar/nav-bar.component';
 
 export class MyMissingTranslationHandler implements MissingTranslationHandler {
   constructor(private readonly logger: NGXLogger) {}
@@ -33,7 +29,9 @@ registerLocaleData(localeEn, 'en');
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -52,6 +50,7 @@ registerLocaleData(localeEn, 'en');
       level: NgxLoggerLevel.DEBUG,
       serverLogLevel: NgxLoggerLevel.WARN,
     }),
+    NavBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

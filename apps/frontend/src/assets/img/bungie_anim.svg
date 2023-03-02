@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bungie-line, .bungie-circle, .bungie-poly, .bungie-path {
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      vector-effect: non-scaling-stroke;
+      transform-origin: 240px 240px;
+    }
+    /*path {*/
+    /*  opacity: 0;*/
+    /*}*/
+    #line-1 {
+      animation-name: anim-line-1;
+    }
+    #line-2 {
+      animation-name: anim-line-2;
+    }
+    #line-3 {
+      animation-name: anim-line-3;
+    }
+    #line-4 {
+      animation-name: anim-line-4;
+    }
+    #line-5 {
+      animation-name: anim-line-5;
+    }
+    #line-6 {
+      animation-name: anim-line-6;
+    }
+    #line-7 {
+      animation-name: anim-line-7;
+    }
+    #line-8 {
+      animation-name: anim-line-8;
+    }
+    #line-9 {
+      animation-name: anim-line-9;
+    }
+    #line-10 {
+      animation-name: anim-line-10;
+    }
+    #line-11 {
+      animation-name: anim-line-11;
+    }
+    #line-12 {
+      animation-name: anim-line-12;
+    }
+    #circle-1 {
+      animation-name: anim-circle-1;
+    }
+    #circle-2 {
+      animation-name: anim-circle-2;
+    }
+    #circle-3 {
+      animation-name: anim-circle-3;
+    }
+    #circle-4 {
+      animation-name: anim-circle-4;
+    }
+    #poly-1-1 {
+      animation-name: anim-poly-1-1;
+    }
+    #poly-1-2 {
+      animation-name: anim-poly-1-2;
+    }
+    #poly-1-3 {
+      animation-name: anim-poly-1-3;
+    }
+    #poly-1-4 {
+      animation-name: anim-poly-1-4;
+    }
+    #poly-1-5 {
+      animation-name: anim-poly-1-5;
+    }
+    #poly-1-6 {
+      animation-name: anim-poly-1-6;
+    }
+    #poly-2-1 {
+      animation-name: anim-poly-2-1;
+    }
+    #poly-2-2 {
+      animation-name: anim-poly-2-2;
+    }
+    #poly-2-3 {
+      animation-name: anim-poly-2-3;
+    }
+    #poly-2-4 {
+      animation-name: anim-poly-2-4;
+    }
+    #poly-2-5 {
+      animation-name: anim-poly-2-5;
+    }
+    #poly-2-6 {
+      animation-name: anim-poly-2-6;
+    }
+    #poly-3-1 {
+      animation-name: anim-poly-3-1;
+    }
+    #poly-3-2 {
+      animation-name: anim-poly-3-2;
+    }
+    #poly-3-3 {
+      animation-name: anim-poly-3-3;
+    }
+    #poly-3-4 {
+      animation-name: anim-poly-3-4;
+    }
+    #poly-3-5 {
+      animation-name: anim-poly-3-5;
+    }
+    #poly-3-6 {
+      animation-name: anim-poly-3-6;
+    }
+    @keyframes anim-line-1 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(0deg);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        /*transform-origin: 240px 240px;*/
+        transform: rotate(-90deg);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-180deg) translateX(0px) translateY(4px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-270deg) translateX(0px) translateY(5px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-360deg);
+      }
+    }
+    @keyframes anim-line-2 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(0deg);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-90deg);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-180deg) translateX(0px) translateY(-5px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-270deg) translateX(0px) translateY(-6px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-360deg);
+      }
+    }
+    @keyframes anim-line-3 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(60deg) translateX(3px) translateY(3px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(150deg) translateX(0px) translateY(69px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(240deg) translateX(0px) translateY(61px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(330deg) translateX(0px) translateY(100px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(420deg) translateX(3px) translateY(3px);
+      }
+    }
+    @keyframes anim-line-4 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(60deg) translateX(-0px) translateY(-23px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(150deg) translateX(0px) translateY(0px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(240deg) translateX(0px) translateY(36px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(330deg) translateX(0px) translateY(34px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(420deg) translateX(-0px) translateY(-23px);
+      }
+    }
+    @keyframes anim-line-5 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(60deg) translateX(-0px) translateY(-27px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(150deg) translateX(0px) translateY(-5px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(240deg) translateX(0px) translateY(11px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(330deg) translateX(0px) translateY(-33px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(420deg) translateX(-0px) translateY(-27px);
+      }
+    }
+    @keyframes anim-line-6 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(60deg) translateX(-0px) translateY(-53px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(150deg) translateX(0px) translateY(-72px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(240deg) translateX(0px) translateY(-14px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(330deg) translateX(0px) translateY(-100px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(420deg) translateX(-0px) translateY(-53px);
+      }
+    }
+    @keyframes anim-line-7 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-60deg) translateX(-0px) translateY(-52px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-150deg) translateX(0px) translateY(-70px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-240deg) translateX(0px) translateY(-14px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-330deg) translateX(0px) translateY(-100px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-420deg) translateX(-0px) translateY(-52px);
+      }
+    }
+    @keyframes anim-line-8 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-60deg) translateX(-0px) translateY(-26px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-150deg) translateX(0px) translateY(-3px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-240deg) translateX(0px) translateY(11px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-330deg) translateX(0px) translateY(-33px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-420deg) translateX(-0px) translateY(-26px);
+      }
+    }
+    @keyframes anim-line-9 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-60deg) translateX(-0px) translateY(-22px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-150deg) translateX(0px) translateY(3px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-240deg) translateX(0px) translateY(36px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-330deg) translateX(0px) translateY(33px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-420deg) translateX(-0px) translateY(-22px);
+      }
+    }
+    @keyframes anim-line-10 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-60deg) translateX(-0px) translateY(3px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-150deg) translateX(0px) translateY(70px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-240deg) translateX(0px) translateY(61px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-330deg) translateX(0px) translateY(100px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: rotate(-420deg) translateX(-0px) translateY(3px);
+      }
+    }
+    @keyframes anim-line-11 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(-71px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(0px) translateY(-71px);
+      }
+      41% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+      }
+      50%, 58% {
+        opacity: 1;
+        animation-timing-function: ease-in-out;
+        transform: rotate(-180deg) translateX(0px) translateY(-46px);
+      }
+      75%, 83% {
+        opacity: 1;
+        animation-timing-function: ease-in-out;
+        transform: rotate(-270deg) translateX(0px) translateY(-46px);
+      }
+      91% {
+        opacity: 0;
+        animation-timing-function: ease-in-out;
+      }
+      100% {
+        opacity: 0;
+        animation-timing-function: ease-in-out;
+        transform: rotate(-360deg) translateX(0px) translateY(-71px);
+      }
+    }
+    @keyframes anim-line-12 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(71px);
+      }
+      25%, 33% {
+        opacity: 0;
+        animation-timing-function: ease-in-out;
+        transform: rotate(-90deg) translateX(0px) translateY(71px);
+      }
+      41% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-180deg) translateX(0px) translateY(46px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-270deg) translateX(0px) translateY(46px);
+      }
+      91% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-360deg) translateX(0px) translateY(71px);
+      }
+    }
+    @keyframes anim-circle-1 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: scale(2.55);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: scale(0.95);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: scale(2.55);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+    }
+    @keyframes anim-circle-2 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1.83);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        transform: scale(0.87);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1.5);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+    }
+    @keyframes anim-circle-3 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+      50%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: scale(0.686);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+    }
+    @keyframes anim-circle-4 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+      50%, 83% {
+        animation-timing-function: ease-in-out;
+        transform: scale(0.686);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        transform: scale(1);
+      }
+    }
+    @keyframes anim-poly-1-1 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(-0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(0px) translateY(-18px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-180deg) translateX(0px) translateY(38px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-360deg) translateX(-50px) translateY(20px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-360deg) translateX(-0px) translateY(0px) scale(1);
+      }
+    }
+    @keyframes anim-poly-1-2 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(-0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(0px) translateY(23px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-180deg) translateX(0px) translateY(37px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-360deg) translateX(-25px) translateY(30px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-360deg) translateX(-0px) translateY(0px) scale(1);
+      }
+    }
+    @keyframes anim-poly-1-3 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        /*transform: matrix(-1, 0, 0, -1, 0, 0) rotate(-0deg) translateX(-0px) translateY(0px);*/
+        transform: rotate(120deg) translateX(41px) translateY(-73px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(210deg) translateX(41px) translateY(-55px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(300deg) translateX(41px) translateY(-111px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(480deg) translateX(-0px) translateY(-57px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(480deg) translateX(41px) translateY(-73px) scale(1);
+      }
+    }
+    @keyframes anim-poly-1-4 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(120deg) translateX(41px) translateY(-73px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(210deg) translateX(41px) translateY(-96px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(300deg) translateX(41px) translateY(-110px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(480deg) translateX(10px) translateY(-45px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(480deg) translateX(41px) translateY(-73px) scale(1);
+      }
+    }
+    @keyframes anim-poly-1-5 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: scaleX(1) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: scaleX(0) translateY(40px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: scaleX(0) translateY(0px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: scaleX(1) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-1-6 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: scaleX(1) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: scaleX(0) translateY(-40px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: scaleX(0) translateY(0px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: scaleX(1) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-2-1 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-60deg) translateX(-43px) scale(2) translateY(-1px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(-43px) scale(1.2) translateY(-1px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(15px) scale(1.8) translateY(-3px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(-43px) scale(1.2) translateY(-1px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(-43px) scale(1.2) translateY(-1px);
+      }
+    }
+    @keyframes anim-poly-2-2 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(240deg) translateX(-45px) scale(2) translateY(-4px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(180deg) translateX(-45px) scale(1.15) translateY(-4px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(270deg) translateX(15px) scale(1.8) translateY(-3px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(180deg) translateX(-45px) scale(1.15) translateY(-4px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(180deg) translateX(-45px) scale(1.15) translateY(-4px);
+      }
+    }
+    @keyframes anim-poly-2-3 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(270deg) translateX(-22px) scale(2) translateY(-2px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(180deg) translateX(25px) scale(1.25) translateY(31px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(270deg) translateX(56px) scale(2) translateY(-2px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(180deg) translateX(25px) scale(1.25) translateY(31px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(180deg) translateX(25px) scale(1.25) translateY(31px);
+      }
+    }
+    @keyframes anim-poly-2-4 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(-16px) scale(2) translateY(-3px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(31px) scale(1.25) translateY(-36px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(61px) scale(2) translateY(-3px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(31px) scale(1.25) translateY(-36px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(31px) scale(1.25) translateY(-36px);
+      }
+    }
+    @keyframes anim-poly-2-5 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(270deg) translateX(-22px) scale(2) translateY(-18px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(180deg) translateX(25px) scale(1.25) translateY(-37px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(270deg) translateX(-36px) scale(1.8) translateY(-3px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(180deg) translateX(25px) scale(1.25) translateY(-37px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(180deg) translateX(25px) scale(1.25) translateY(-37px);
+      }
+    }
+    @keyframes anim-poly-2-6 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(-19px) scale(2) translateY(14px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(31px) scale(1.25) translateY(32px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(-36px) scale(1.8) translateY(-3px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(31px) scale(1.25) translateY(32px);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(31px) scale(1.25) translateY(32px);
+      }
+    }
+    @keyframes anim-poly-3-1 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(-30px) translateY(-70px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(30px) translateY(30px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-3-2 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(90deg) translateX(0px) translateY(-5px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(0px) translateY(-50px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(20px) translateY(20px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-3-3 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(60px) translateY(-70px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotate(-0deg) translateX(0px) translateY(-100px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-90deg) translateX(10px) translateY(10px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotate(-0deg) translateX(0px) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-3-4 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(-90deg) translateX(-25px) translateY(-80px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg)  rotate(-90deg) translateX(30px) translateY(30px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-3-5 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(90deg) translateX(23px) translateY(-5px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(-50px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg)  rotate(-90deg) translateX(20px) translateY(20px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+    }
+    @keyframes anim-poly-3-6 {
+      0%, 8% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+      25%, 33% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(-90deg) translateX(60px) translateY(-80px);
+      }
+      50%, 58% {
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(-100px);
+      }
+      75%, 83% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg)  rotate(-90deg) translateX(10px) translateY(10px) scale(0);
+      }
+      100% {
+        animation-timing-function: ease-in-out;
+        opacity: 0;
+        transform: rotateY(180deg) rotate(0deg) translateX(0px) translateY(0px);
+      }
+    }
+
+
+
+  </style>
+
+  <line x1="34.916" y1="310.593" x2="447.123" y2="310.593" id="line-1" class="bungie-line"/>
+  <line x1="32.795" y1="169.491" x2="445.002" y2="169.491" id="line-2" class="bungie-line"/>
+  <line x1="34.916" y1="310.593" x2="447.123" y2="310.593" id="line-11" class="bungie-line"/>
+  <line x1="32.795" y1="169.491" x2="445.002" y2="169.491" id="line-12" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-3" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-4" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-5" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-6" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-7" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-8" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-9" class="bungie-line"/>
+  <line x1="30" y1="240" x2="450" y2="240" id="line-10" class="bungie-line"/>
+  <circle style="fill: none;" cx="240" cy="240." r="50" id="circle-1" class="bungie-circle"/>
+  <circle style="fill: none;" cx="240" cy="240." r="74" id="circle-2" class="bungie-circle"/>
+  <circle style="fill: none;" cx="240" cy="240." r="145.818" id="circle-3" class="bungie-circle"/>
+  <circle style="fill: none;" cx="240" cy="240." r="161.643" id="circle-4" class="bungie-circle"/>
+  <polygon points="144.407 307.521 208.313 196.089 219.94 216.437 167.419 307.385" id="poly-1-1" class="bungie-poly"/>
+  <polygon points="177.469 307.271 224.942 224.636 236.619 244.8 200.761 307.212" id="poly-1-2" class="bungie-poly"/>
+  <polygon points="144.407 307.521 208.313 196.089 219.94 216.437 167.419 307.385" id="poly-1-3" class="bungie-poly"/>
+  <polygon points="177.469 307.271 224.942 224.636 236.619 244.8 200.761 307.212" id="poly-1-4" class="bungie-poly"/>
+  <polygon points="227.791 218.289 239.508 238.979 251.437 218.724 239.601 198.723" transform="matrix(-1, 0, 0, -1, 479.227997, 437.702011)" id="poly-1-5" class="bungie-poly"/>
+  <polygon points="208.549 306.352 239.916 251.135 271.514 306.597" id="poly-1-6" class="bungie-poly"/>
+  <path d="M 272.58 242.459 L 217.241 274.409 L 217.241 210.509 L 272.58 242.459 Z" id="poly-2-1" class="bungie-path"/>
+  <path d="M 272.58 242.459 L 217.241 274.409 L 217.241 210.509 L 272.58 242.459 Z" id="poly-2-2" class="bungie-path"/>
+  <path d="M 272.58 242.459 L 217.241 274.409 L 217.241 210.509 L 272.58 242.459 Z" id="poly-2-3" class="bungie-path"/>
+  <path d="M 272.58 242.459 L 217.241 274.409 L 217.241 210.509 L 272.58 242.459 Z" id="poly-2-4" class="bungie-path"/>
+  <path d="M 272.58 242.459 L 217.241 274.409 L 217.241 210.509 L 272.58 242.459 Z" id="poly-2-5" class="bungie-path"/>
+  <path d="M 272.58 242.459 L 217.241 274.409 L 217.241 210.509 L 272.58 242.459 Z" id="poly-2-6" class="bungie-path"/>
+  <polygon points="183.6060028076172 315.5320129394531 212.58700561523438 315.39898681640625 242.05099487304688 264.5010070800781 213.11300659179688 264.6029968261719" id="poly-3-1" class="bungie-poly"/>
+  <polygon points="183.6060028076172 315.5320129394531 212.58700561523438 315.39898681640625 242.05099487304688 264.5010070800781 213.11300659179688 264.6029968261719" id="poly-3-2" class="bungie-poly"/>
+  <polygon points="183.6060028076172 315.5320129394531 212.58700561523438 315.39898681640625 242.05099487304688 264.5010070800781 213.11300659179688 264.6029968261719" id="poly-3-3" class="bungie-poly"/>
+  <polygon points="183.6060028076172 315.5320129394531 212.58700561523438 315.39898681640625 242.05099487304688 264.5010070800781 213.11300659179688 264.6029968261719" id="poly-3-4" class="bungie-poly"/>
+  <polygon points="183.6060028076172 315.5320129394531 212.58700561523438 315.39898681640625 242.05099487304688 264.5010070800781 213.11300659179688 264.6029968261719" id="poly-3-5" class="bungie-poly"/>
+  <polygon points="183.6060028076172 315.5320129394531 212.58700561523438 315.39898681640625 242.05099487304688 264.5010070800781 213.11300659179688 264.6029968261719" id="poly-3-6" class="bungie-poly"/>
+</svg>

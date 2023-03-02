@@ -5,6 +5,7 @@ import session from 'express-session';
 
 import { AppModule } from './app/app.module';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
+import { VersionInterceptor } from './interceptors/version.interceptor';
 
 async function bootstrap() {
   let logger_levels: LogLevel[] = ['error', 'warn', 'log'];
@@ -25,11 +26,7 @@ async function bootstrap() {
     }
   }
 
-  console.log(
-    `LOG_LEVEL : ${
-      process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'LOG (by default)'
-    }`
-  );
+  console.log(`LOG_LEVEL : ${process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'LOG (by default)'}`);
 
   const app = await NestFactory.create(AppModule, {
     logger: logger_levels,
@@ -37,7 +34,7 @@ async function bootstrap() {
   });
 
   const config = app.get<ConfigService>(ConfigService);
-  app.useGlobalInterceptors(new LoggingInterceptor());
+  app.useGlobalInterceptors(new LoggingInterceptor(), new VersionInterceptor());
 
   // // Add cors
   // app.use(cors());
@@ -55,9 +52,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3333;
   await app
     .listen(port, () => {
-      Logger.log(
-        `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-      );
+      Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
     })
     .catch((reason) => {
       Logger.error('Error on serveur');

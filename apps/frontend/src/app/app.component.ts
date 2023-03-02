@@ -9,22 +9,11 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor(private _translate: TranslateService, private _matIconRegistry: MatIconRegistry, private _domSanitizer: DomSanitizer) {
+    this._translate.setDefaultLang('en');
 
-  constructor(    private _translate: TranslateService,
-    private _matIconRegistry: MatIconRegistry,
-    private _domSanitizer: DomSanitizer,
-) {
-  this._translate.setDefaultLang('en');
-
-  [
-    'flag_fr',
-    'flag_us'
-  ].forEach((name) => {
-    this._matIconRegistry.addSvgIcon(
-      name,
-      this._domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/${name}.svg`)
-    );
-  });
-
-}
+    ['flag_fr', 'flag_us', 'bungie_anim'].forEach((name) => {
+      this._matIconRegistry.addSvgIcon(name, this._domSanitizer.bypassSecurityTrustResourceUrl(`/assets/img/${name}.svg`));
+    });
+  }
 }

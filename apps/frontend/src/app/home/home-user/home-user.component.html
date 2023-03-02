@@ -1,0 +1,24 @@
+<mat-card class="bg-background-light m-1">
+  <mat-card-header class="text-primary-default">
+    <mat-card-title class="w-40 text-2xl">{{ characterStat.userId | titlecase }}</mat-card-title>
+    <!-- <mat-card-subtitle class="text-primary-default flex justify-end">
+      <division-loader-stat-item [stat]="characterStat.stats.highestPlayerLevel"></division-loader-stat-item>
+    </mat-card-subtitle> -->
+    <!-- <img mat-card-avatar [src]="characterStat.platformInfo.avatarUrl" /> -->
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let cat of categories" class="mb-2 mt-2">
+      <label class="text-xl mb-2 flex">
+        <mat-icon *ngIf="!isOpen[cat]" (click)="isOpen[cat] = true">chevron_right</mat-icon>
+        <mat-icon *ngIf="isOpen[cat]" (click)="isOpen[cat] = false">expand_more</mat-icon>
+        {{ 'title-' + cat | translate }}
+      </label>
+      <div class="flex flex-row flex-wrap ml-4 mt-2" [class.hidden]="!isOpen[cat]"  cdkDropListGroup>
+        <div class="flex grow" *ngFor="let stat of getStat(cat); let i = index" cdkDropList [cdkDropListData]="i" (cdkDropListDropped)="dragDropped(cat, $event)">
+          <!-- <div class="example-custom-placeholder bg-red-light" *cdkDragPlaceholder></div> -->
+          <division-loader-stat-item [stat]="stat" class="grow bg-background-light ml-1 mr-1 mt-0 mb-2" [cdkDragData]="i" cdkDrag></division-loader-stat-item>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

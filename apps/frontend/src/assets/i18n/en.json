@@ -1,0 +1,21 @@
+{
+  "title": "Div stats",
+  "version": "version",
+  "overview": "Overview",
+  "time-played": "Time-Played",
+  "level": "Level",
+  "pve-kills": "Pve kills",
+  "pvp-kills": "Pvp kills",
+
+  "title-general": "Overview",
+  "title-pve": "Pve",
+  "title-darkZone": "Dark Zone",
+  "title-conflictPvp": "Conflict Pvp",
+  "title-kills": "Kills",
+
+  "erreur-501": "Error 501",
+  "not-ye-implemented": "Not yep implemented",
+  "not-ye-implemented-msg": "Sorry, I'm doing what I can, but this feature is not implemented yet.",
+
+  "bask-to-start": "Back to start"
+}
