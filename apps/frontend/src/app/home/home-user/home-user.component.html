@@ -1,6 +1,7 @@
 <mat-card class="bg-background-light m-1">
-  <mat-card-header class="text-primary-default">
+  <mat-card-header class="text-primary-default flex items-baseline justify-between">
     <mat-card-title class="w-40 text-2xl">{{ characterStat.userId | titlecase }}</mat-card-title>
+    <span class="text-primary-light text-sm">{{ 'last-seen' | translate }} : {{characterStat.dateStart | date : 'shortDate'}}</span>
     <!-- <mat-card-subtitle class="text-primary-default flex justify-end">
       <division-loader-stat-item [stat]="characterStat.stats.highestPlayerLevel"></division-loader-stat-item>
     </mat-card-subtitle> -->
