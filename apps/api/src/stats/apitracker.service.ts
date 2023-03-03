@@ -13,7 +13,7 @@ export class ApitrackerService {
 
   async getStats(player: string): Promise<CharacterStats> {
     return new Promise((resolve) => {
-      // this.logger.debug(`getStats(${player})`);
+      this.logger.debug(`getStats(${player})`);
 
       if (this._configService.get<boolean>('USE_APITRACKER_MOCK', false)) {
         this.logger.warn('Use of APItracker mock !!');
@@ -30,7 +30,7 @@ export class ApitrackerService {
         .get<APITrackerObj>(URL, { headers: { 'TRN-Api-Key': this._configService.get('TRN_API_KEY') } })
         .pipe(
           catchError((error: AxiosError) => {
-            this.logger.error(error.response.data);
+            this.logger.error(error?.response?.data);
             throw 'Cannot load stats from apitracker !';
           })
         )

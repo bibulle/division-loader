@@ -4,6 +4,11 @@ import { ToBeDefinedComponent } from './to-be-defined/to-be-defined.component';
 import { ToBeDefinedModule } from './to-be-defined/to-be-defined.module';
 import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home.component';
+import { TimePlayedComponent } from './curves/time-played/time-played.component';
+import { CurvesModule } from './curves/curves.module';
+import { LevelComponent } from './curves/level/level.component';
+import { PveKillsComponent } from './curves/pve-kills/pve-kills.component';
+import { PvpKillsComponent } from './curves/pvp-kills/pvp-kills.component';
 
 const routes: Routes = [
   {
@@ -22,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'time',
-    component: ToBeDefinedComponent,
+    component: TimePlayedComponent,
     data: {
       label: 'time-played',
       menu: true,
@@ -31,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'level',
-    component: ToBeDefinedComponent,
+    component: LevelComponent,
     data: {
       label: 'level',
       menu: true,
@@ -40,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'pve-kills',
-    component: ToBeDefinedComponent,
+    component: PveKillsComponent,
     data: {
       label: 'pve-kills',
       menu: true,
@@ -49,7 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'pvp-kills',
-    component: ToBeDefinedComponent,
+    component: PvpKillsComponent,
     data: {
       label: 'pvp-kills',
       menu: true,
@@ -69,7 +74,7 @@ const routes: Routes = [
 
 // configures NgModule imports and exports
 @NgModule({
-  imports: [RouterModule.forRoot(routes), ToBeDefinedModule, HomeModule],
+  imports: [RouterModule.forRoot(routes), ToBeDefinedModule, HomeModule, CurvesModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
