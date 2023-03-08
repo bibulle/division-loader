@@ -1,10 +1,14 @@
-<div class="flex p-1 border border-background-default" *ngIf="stat.value !== null">
+<div class="flex p-1 border relative border-background-default" *ngIf="stat && stat.value !== null">
   <div class="w-1 bg-primary-dark relative mr-1">
     <div class="w-1 bg-primary-default absolute bottom-0" [style.height]="stat.percentile + '%'"></div>
   </div>
   <div class="flex flex-col">
     <div class="flex">{{ stat.displayName }}</div>
     <div class="flex text-xl">{{ stat.displayValue }}</div>
-    <div class="flex text-[0.6rem]">{{ stat.percentile ? stat.percentile : 0}}%</div>
+    <div class="flex text-[0.6rem]">{{ stat.percentile ? stat.percentile : 0 }}%</div>
+    <a (click)="highlight()" class="opacity-20 absolute right-0 -bottom-2">
+      <mat-icon *ngIf="!isHighlighted">star_outlined</mat-icon>
+      <mat-icon *ngIf="isHighlighted">star</mat-icon>
+    </a>
   </div>
 </div>
