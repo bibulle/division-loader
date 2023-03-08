@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { registerLocaleData } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import localeFr from '@angular/common/locales/fr';
 import { MissingTranslationHandler, MissingTranslationHandlerParams, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -12,6 +12,8 @@ import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarModule } from './nav-bar/nav-bar.component';
+import { VersionInterceptor } from './utils/version/version.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export class MyMissingTranslationHandler implements MissingTranslationHandler {
   constructor(private readonly logger: NGXLogger) {}
@@ -51,8 +53,9 @@ registerLocaleData(localeEn, 'en');
       serverLogLevel: NgxLoggerLevel.WARN,
     }),
     NavBarModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: VersionInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

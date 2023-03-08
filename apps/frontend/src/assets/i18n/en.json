@@ -18,5 +18,6 @@
   "not-ye-implemented": "Not yep implemented",
   "not-ye-implemented-msg": "Sorry, I'm doing what I can, but this feature is not implemented yet.",
 
-  "bask-to-start": "Back to start"
+  "bask-to-start": "Back to start",
+  "update-needed": "An update is available. You can refresh your page."
 }
