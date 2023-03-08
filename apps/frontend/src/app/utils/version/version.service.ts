@@ -16,9 +16,9 @@ export class VersionService {
   private versionChangedSubject: BehaviorSubject<boolean>;
 
   setBackendVersion(version: string) {
-    console.log(version);
+    // console.log(version);
     this.backendVersion = version;
-    console.log(`${this.frontendVersion} ${this.backendVersion} ${this.frontendVersion !== this.backendVersion}`);
+    // console.log(`${this.frontendVersion} ${this.backendVersion} ${this.frontendVersion !== this.backendVersion}`);
     this.versionChangedSubject.next(this.frontendVersion !== this.backendVersion);
   }
 

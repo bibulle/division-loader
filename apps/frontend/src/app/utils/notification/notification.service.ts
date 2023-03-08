@@ -63,7 +63,7 @@ export class NotificationService {
     }
   }
 
-  private _prepareMessage(mess: string, ...args: any[]): Promise<string> {
+  private _prepareMessage(mess: string, ...args: unknown[]): Promise<string> {
     return new Promise<string>((resolve) => {
       if (mess.match('.* [|] translate')) {
         const key = mess.replace(' | translate', '');

@@ -8,7 +8,7 @@ export class VersionInterceptor implements NestInterceptor {
   readonly logger = new Logger(VersionInterceptor.name);
   readonly version = new Version();
 
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<unknown> {
     return next.handle().pipe(
       map((data) => {
         // in case of stream
