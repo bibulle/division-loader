@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  APP_NAME: foo
+  APP_NAME: foo 
   VERSION: 0.0.0
   APP_PATH: ./application
   OPS_PATH: ./gitops
