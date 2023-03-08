@@ -41,6 +41,20 @@ export class HomeUserComponent implements OnInit, OnDestroy {
     return lst.sort((a, b) => this._statsSorting[category].indexOf(a.displayName) - this._statsSorting[category].indexOf(b.displayName));
   }
 
+  setHighlightedStat(name: string) {
+    this._homeService.setHighlightedStat(name);
+  }
+  getHighlightedStat(): Stat | undefined {
+    // console.log(`getHighlightedStat()`)
+
+    if (!this._statsSorting['highlighted'] || this._statsSorting['highlighted'].length == 0) {
+      return;
+    }
+
+    const stat = Object.values(this.characterStat.stats).find((s) => s.displayName === this._statsSorting['highlighted'][0] && s.value !== null);
+    return stat;
+  }
+
   dragDropped(category: string, $event: CdkDragDrop<number>) {
     // console.log(category)
     // console.log($event.previousContainer.data)

@@ -72,6 +72,13 @@ export class HomeService {
     this._statSortingSubject.next(this._statSorting);
     this._saveStatsSortingToLocalStorage();
   }
+  setHighlightedStat(name: string) {
+    console.log(this._statSorting);
+    this._statSorting['highlighted'] = [name];
+
+    this._statSortingSubject.next(this._statSorting);
+    this._saveStatsSortingToLocalStorage();
+  }
 
   private _loadStatsSortingFromLocalStorage() {
     try {
@@ -84,6 +91,10 @@ export class HomeService {
     } catch {
       this._statSorting = HomeService.STATS_SORT_DEFAULT;
     }
+
+    if (!this._statSorting['highlighted']) {
+      this._statSorting['highlighted'] = ['Player Level'];
+    }
   }
 
   private _saveStatsSortingToLocalStorage() {
@@ -92,6 +103,7 @@ export class HomeService {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private static readonly STATS_SORT_DEFAULT = {
+    highlighted: ['Player Level'],
     general: [
       'Time Played',
       'PvP Kills',
