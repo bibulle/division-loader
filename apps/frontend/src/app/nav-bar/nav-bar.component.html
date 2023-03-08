@@ -3,10 +3,11 @@
     <div class="flex items-center justify-between h-16">
       <div class="flex items-center">
         <!-- Icon -->
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 relative">
           <svg class="h-8 w-8 stroke-primary-default fill-background-light">
             <use xlink:href="assets/img/symbol-defs.svg#logo1"></use>
           </svg>
+          <span class="text-[7px] absolute -bottom-1 -right-1">{{ version }}</span>
         </div>
         <!-- Menu horizontal gauche-->
         <div class="hidden md:block">
@@ -41,9 +42,11 @@
           <!-- <div matTooltip="{{ getAnimTooltip(loadingTimer) | translate }}">
             <mat-icon svgIcon="bungie_anim"></mat-icon>
           </div> -->
-          <a mat-button id="nav-bar-reload" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}" color="accent">
-            <mat-icon>cloud_upload</mat-icon>
-          </a>  
+          <button mat-button id="nav-bar-reload" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}" color="accent">
+            <svg class="h-8 w-8 fill-primary-default">
+              <use xlink:href="assets/img/symbol-defs.svg#upgrade"></use>
+            </svg>
+            </button>  
         </div>
       </div>
 

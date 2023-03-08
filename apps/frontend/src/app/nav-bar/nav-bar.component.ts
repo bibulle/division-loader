@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NavBarService } from './nav-bar.service';
 import { MatMenuModule } from '@angular/material/menu';
+import { VersionService } from '../utils/version/version.service';
+import { NotificationService } from '../utils/notification/notification.service';
 
 @Component({
   selector: 'division-loader-nav-bar',
@@ -26,13 +28,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   loadingTimer = -1;
   private _currentLoadingStateSubscription?: Subscription;
 
-  constructor(
-    private _router: Router,
-    // private _userService: UserService,
-    // private _versionService: VersionService,
-    // private _notificationService: NotificationService,
-    private _navBarService: NavBarService
-  ) {
+  constructor(private _router: Router, private _notificationService: NotificationService, private _navBarService: NavBarService, private _versionService: VersionService) {
     this._router.events.subscribe((data) => {
       // console.log(data.constructor.name);
       if (data instanceof NavigationEnd) {
@@ -44,14 +40,13 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this._currentVersionChangedSubscription = this._versionService
-    //   .versionChangedObservable()
-    //   .subscribe((versionChanged) => {
-    //     this.updateNeeded = versionChanged;
-    //     if (this.updateNeeded) {
-    //       this._notificationService.error('update-needed | translate');
-    //     }
-    //   });
+    this._currentVersionChangedSubscription = this._versionService.versionChangedObservable().subscribe((versionChanged) => {
+      // console.log(`version change : ${versionChanged}`);
+      this.updateNeeded = versionChanged;
+      if (this.updateNeeded) {
+        this._notificationService.error('update-needed | translate');
+      }
+    });
     this._currentLoadingStateSubscription = this._navBarService.loadingObservable().subscribe((loadingState) => {
       // console.log(loadingState);
       this.loadingTimer = loadingState;
@@ -62,6 +57,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this._currentVersionChangedSubscription) {
       this._currentVersionChangedSubscription.unsubscribe();
+    }
+    if (this._currentLoadingStateSubscription) {
+      this._currentLoadingStateSubscription.unsubscribe();
     }
   }
 
