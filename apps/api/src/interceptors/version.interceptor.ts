@@ -23,6 +23,7 @@ export class VersionInterceptor implements NestInterceptor {
           data = { data: data };
         }
 
+        this.version.version = '0.6.0';
         // add version
         data.version = this.version;
 

@@ -31,7 +31,7 @@
               <svg *ngIf="link.icon" class="h-6 w-6 mx-2">
                 <use [attr.xlink:href]="getIconAttr(link.icon)"></use>
               </svg>
-              <span>{{link.label | translate}}</span>
+              <span>{{ link.label | translate }}</span>
             </button>
           </div>
         </div>
@@ -46,7 +46,7 @@
             <svg class="h-8 w-8 fill-primary-default">
               <use xlink:href="assets/img/symbol-defs.svg#upgrade"></use>
             </svg>
-            </button>  
+          </button>
         </div>
       </div>
 
@@ -95,16 +95,17 @@
         <span>{{ link.label | translate }}</span>
       </a>
     </div>
-    <div class="">
-      <div class="flex items-center px-5">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <!-- <div matTooltip="{{ getAnimTooltip(loadingTimer) | translate }}">
           <mat-icon svgIcon="bungie_anim"></mat-icon>
         </div> -->
-        <a mat-button id="nav-bar-reload" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}" color="accent">
-          <mat-icon>cloud_upload</mat-icon>
+        <a class="px-3 py-2 text-primary-light flex" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}">
+          <svg class="h-6 w-6 mr-2 fill-primary-light">
+            <use xlink:href="assets/img/symbol-defs.svg#upgrade"></use>
+          </svg>
+          <span>{{ 'update-needed-short' | translate }}</span>
         </a>
       </div>
-    </div>
   </mat-menu>
 </nav>
 <!-- <nav class="bg-background-dark sticky top-0 z-50 hidden">
