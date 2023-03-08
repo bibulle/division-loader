@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/bibulle/division-loader/compare/v0.4.0...v0.4.1) (2023-03-08)
+
+
+### Features
+
+* add selectable item in the summary ([559181d](https://github.com/bibulle/division-loader/commit/559181df1175ee127a2bb2bd1c8a1de81feed88d))
+
+
+### Bug Fixes
+
+* add reload nbutton to sma ([10ef29e](https://github.com/bibulle/division-loader/commit/10ef29eb63aeeee5c96e5e1414de1f5d30770095))
+* remove test on version ([64cae11](https://github.com/bibulle/division-loader/commit/64cae11ef86cf513b82c7c1fb25acdbac45303a6))
+
 ## [0.4.0](https://github.com/bibulle/division-loader/compare/v0.3.0...v0.4.0) (2023-03-08)
 
 
