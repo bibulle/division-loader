@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/bibulle/division-loader/compare/v0.4.1...v0.5.0) (2023-03-09)
+
+
+### Features
+
+* add better label ([3c64f06](https://github.com/bibulle/division-loader/commit/3c64f0672526f5032f2ba640aecb59042ecd312c))
+* add selectable graphic ([7904701](https://github.com/bibulle/division-loader/commit/7904701f16ec804714e5b6118fc054ef430cfec1))
+* add selectable graphic  (add stats list api) ([1e7305a](https://github.com/bibulle/division-loader/commit/1e7305a62e35b1e7af5096432add69278f4e66d4))
+
+
+### Bug Fixes
+
+* same refactoring error ([37219d1](https://github.com/bibulle/division-loader/commit/37219d1146f7790e2b09d4790c72f731ed1daabf))
+* wrong rename ([84a5f9c](https://github.com/bibulle/division-loader/commit/84a5f9c8cc99e6f7cad04d295418f710e662ea95))
+
 ### [0.4.1](https://github.com/bibulle/division-loader/compare/v0.4.0...v0.4.1) (2023-03-08)
 
 
