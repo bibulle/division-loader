@@ -85,3 +85,11 @@ export class Stat {
   displayValue: string | null = null;
   displayType = '';
 }
+
+export class StatDescription {
+  category = '';
+  descriptions: {
+    displayName: string;
+    description: string;
+  }[] = [];
+}

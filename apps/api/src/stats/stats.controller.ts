@@ -1,4 +1,4 @@
-import { CharacterStats } from '@division-loader/apis';
+import { CharacterStats, StatDescription } from '@division-loader/apis';
 import { Controller, Get, Logger, Res, Headers, StreamableFile, HttpException, HttpStatus } from '@nestjs/common';
 import { createReadStream } from 'fs';
 import { StatsService } from './stats.service';
@@ -43,5 +43,10 @@ export class StatsController {
           throw new HttpException('Something go wrong', HttpStatus.INTERNAL_SERVER_ERROR);
         });
     });
+  }
+
+  @Get('/description')
+  async getStatsDescription(): Promise<StatDescription[]> {
+    return this._statsService.getStatsDescription();
   }
 }
