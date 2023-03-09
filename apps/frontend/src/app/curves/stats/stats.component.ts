@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { CharacterStats } from '@division-loader/apis';
+import { CharacterStats, StatDescription } from '@division-loader/apis';
 import { Subscription } from 'rxjs';
 import { CurvesService } from '../curves.service';
 
@@ -10,7 +10,7 @@ import { CurvesService } from '../curves.service';
   styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent implements OnInit, OnDestroy {
-  statName?: string;
+  statName?: StatDescription;
   private _currentStatsSubscription: Subscription | undefined;
 
   characters: CharacterStats[] = [];
@@ -19,8 +19,16 @@ export class StatsComponent implements OnInit, OnDestroy {
     this._router.events.subscribe((data) => {
       // console.log(data);
       if (data instanceof NavigationEnd) {
-        const stat = this._route.snapshot.paramMap.get('stat_name');
-        this.statName = stat !== null ? stat : undefined;
+        const statKey = this._route.snapshot.paramMap.get('stat_name');
+
+        this._curvesService
+          .getStatDescription(statKey ? statKey : 'timePlayed')
+          .then((stat) => {
+            this.statName = stat;
+          })
+          .catch((reason) => {
+            console.error(reason);
+          });
       }
     });
   }

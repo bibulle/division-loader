@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiReturn, StatDescription } from '@division-loader/apis';
+import { ApiReturn, CategoryDescription } from '@division-loader/apis';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export enum LoadingState {
@@ -91,10 +91,10 @@ export class NavBarService {
     }, 10000);
   }
 
-  getStatsList(): Promise<StatDescription[]> {
-    return new Promise<StatDescription[]>((resolve) => {
+  getStatsList(): Promise<CategoryDescription[]> {
+    return new Promise<CategoryDescription[]>((resolve) => {
       this._http.get<ApiReturn>('/api/stats/description').subscribe((data) => {
-        const descriptions = data.data as StatDescription[];
+        const descriptions = data.data as CategoryDescription[];
         resolve(descriptions);
       });
     });

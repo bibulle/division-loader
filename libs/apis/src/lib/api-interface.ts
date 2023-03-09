@@ -1,4 +1,4 @@
-import { CharacterStats, StatDescription } from './character-stats';
+import { CharacterStats, CategoryDescription } from './character-stats';
 import { Version } from './version';
 
 /**
@@ -6,5 +6,5 @@ import { Version } from './version';
  */
 export interface ApiReturn {
   version: Version;
-  data: CharacterStats[] | StatDescription[];
+  data: CharacterStats[] | CategoryDescription[];
 }

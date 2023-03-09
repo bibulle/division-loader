@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { CharacterStats, GraphTypeKey } from '@division-loader/apis';
+import { CharacterStats, GraphTypeKey, StatDescription } from '@division-loader/apis';
 import * as d3 from 'd3';
 import { NumberValue } from 'd3';
 
@@ -18,7 +18,7 @@ export class GraphComponent implements OnInit, OnChanges {
   graphType = GraphTypeKey.TIME;
 
   @Input()
-  statName?: string;
+  statName?: StatDescription;
 
   @ViewChild('chart', { static: true })
   private chartContainer: ElementRef | undefined;
@@ -160,16 +160,16 @@ export class GraphComponent implements OnInit, OnChanges {
       switch (this.graphType) {
         case GraphTypeKey.TIME:
         default:
-          this.statName = 'timePlayed';
+          this.statName = { key: 'timePlayed', displayName: 'Time Played', description: '' };
           break;
         case GraphTypeKey.LEVEL:
-          this.statName = 'highestPlayerLevel';
+          this.statName = { key: 'highestPlayerLevel', displayName: 'Player Level', description: '' };
           break;
         case GraphTypeKey.PVE_KILLS:
-          this.statName = 'killsNpc';
+          this.statName = { key: 'killsNpc', displayName: 'NPC Kills', description: '' };
           break;
         case GraphTypeKey.PVP_KILLS:
-          this.statName = 'killsPvP';
+          this.statName = { key: 'killsPvP', displayName: 'PvP Kills', description: '' };
           break;
       }
     }
@@ -326,7 +326,7 @@ export class GraphComponent implements OnInit, OnChanges {
     const xAxis = d3.axisBottom(xScale).tickSizeInner(-this.height).tickSizeOuter(0).tickPadding(10).tickValues(resultTickValues).tickFormat(GraphComponent._multiFormat);
     const yAxis = d3.axisLeft(yScale).tickSizeInner(-this.width).tickSizeOuter(0).tickPadding(10);
 
-    if (this.statName === 'timePlayed') {
+    if (this.statName?.key === 'timePlayed') {
       yAxis.tickFormat(GraphComponent._multiFormatTimePlayed);
     }
 
@@ -341,7 +341,7 @@ export class GraphComponent implements OnInit, OnChanges {
     // this._translateService.get(Graph.Y_LABEL[this.graphType]).subscribe((text) => {
     //   yAxisLabel.text(text);
     // });
-    yAxisLabel.text(this.statName);
+    yAxisLabel.text(this.statName?.displayName);
 
     // ---------
     // create clip path
@@ -597,7 +597,7 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   _getYMax(d: CharacterStats): number {
-    const attr: string = this.statName ? this.statName : 'timePlayed';
+    const attr: string = this.statName ? this.statName.key : 'timePlayed';
     const stat = (d.stats as any)[attr];
 
     return stat && stat.value ? stat.value : 0;

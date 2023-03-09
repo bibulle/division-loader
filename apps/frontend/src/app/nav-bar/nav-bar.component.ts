@@ -6,7 +6,7 @@ import { MatMenu, MatMenuModule, MatMenuPanel } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { StatDescription, Version } from '@division-loader/apis';
+import { CategoryDescription, Version } from '@division-loader/apis';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { NotificationService } from '../utils/notification/notification.service';
@@ -36,7 +36,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   updateNeeded = false;
   private _currentVersionChangedSubscription?: Subscription;
 
-  statDescriptions: StatDescription[] = [];
+  statDescriptions: CategoryDescription[] = [];
   showCat: { [cat: string]: boolean } = {};
 
   loadingTimer = -1;

@@ -87,11 +87,13 @@ export class Stat {
   displayType = '';
 }
 
-export class StatDescription {
+export class CategoryDescription {
   category = '';
-  descriptions: {
-    key: string;
-    displayName: string;
-    description: string;
-  }[] = [];
+  descriptions: StatDescription[] = [];
+}
+
+export class StatDescription {
+  key = '';
+  displayName = '';
+  description = '';
 }
