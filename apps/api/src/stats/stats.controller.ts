@@ -1,5 +1,5 @@
-import { CharacterStats, StatDescription } from '@division-loader/apis';
-import { Controller, Get, Logger, Res, Headers, StreamableFile, HttpException, HttpStatus } from '@nestjs/common';
+import { CategoryDescription, CharacterStats } from '@division-loader/apis';
+import { Controller, Get, Headers, HttpException, HttpStatus, Logger, Res, StreamableFile } from '@nestjs/common';
 import { createReadStream } from 'fs';
 import { StatsService } from './stats.service';
 
@@ -46,7 +46,7 @@ export class StatsController {
   }
 
   @Get('/description')
-  async getStatsDescription(): Promise<StatDescription[]> {
+  async getStatsDescription(): Promise<CategoryDescription[]> {
     return this._statsService.getStatsDescription();
   }
 }
