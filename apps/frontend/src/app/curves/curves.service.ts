@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CharacterStats, ApiReturn } from '@division-loader/apis';
+import { CharacterStats, ApiReturn, StatDescription, CategoryDescription } from '@division-loader/apis';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -53,5 +53,21 @@ export class CurvesService {
     } else {
       CurvesService._refreshStatsIsRunning = false;
     }
+  }
+
+  getStatDescription(key: string): Promise<StatDescription> {
+    return new Promise<StatDescription>((resolve) => {
+      this._http.get<ApiReturn>('/api/stats/description').subscribe((data) => {
+        const descriptions = data.data as CategoryDescription[];
+
+        const description = descriptions.flatMap((cd) => cd.descriptions).find((description) => description.key === key);
+
+        if (description) {
+          resolve(description);
+        } else {
+          resolve({ key: 'timePlayed', displayName: 'Time Played', description: '' });
+        }
+      });
+    });
   }
 }

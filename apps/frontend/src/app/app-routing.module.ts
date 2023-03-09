@@ -9,6 +9,7 @@ import { CurvesModule } from './curves/curves.module';
 import { LevelComponent } from './curves/level/level.component';
 import { PveKillsComponent } from './curves/pve-kills/pve-kills.component';
 import { PvpKillsComponent } from './curves/pvp-kills/pvp-kills.component';
+import { StatsComponent } from './curves/stats/stats.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,14 @@ const routes: Routes = [
       label: 'pvp-kills',
       menu: true,
       icon: 'dark-zone',
+    },
+  },
+  {
+    path: 'stats/:stat_name',
+    component: StatsComponent,
+    data: {
+      label: 'stats',
+      menu: false,
     },
   },
   // Show the 404 page for any routes that don't exist.

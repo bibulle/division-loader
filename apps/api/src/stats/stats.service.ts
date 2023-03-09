@@ -1,12 +1,12 @@
+import { ApiReturn, CategoryDescription, CharacterStats, Version } from '@division-loader/apis';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CronExpression, SchedulerRegistry } from '@nestjs/schedule';
-import { ApitrackerService } from './apitracker.service';
 import { CronJob } from 'cron';
-import { StatsDbService } from './stats-db.service';
-import { ApiReturn, CharacterStats, Version } from '@division-loader/apis';
-import { mkdirSync, rename, renameSync, statSync, writeFileSync } from 'fs';
+import { mkdirSync, renameSync, statSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
+import { ApitrackerService } from './apitracker.service';
+import { StatsDbService } from './stats-db.service';
 
 @Injectable()
 export class StatsService {
@@ -76,6 +76,45 @@ export class StatsService {
 
   async getCurrentValues(): Promise<CharacterStats[]> {
     return this._statsDbService.findLastCharacterStats();
+  }
+  async getStatsDescription(): Promise<CategoryDescription[]> {
+    return new Promise<CategoryDescription[]>((resolve, reject) => {
+      this._statsDbService
+        .findLastCharacterStats()
+        .then((charStats) => {
+          const stats = charStats.flatMap((char) => {
+            return Object.entries(char.stats).map((entries) => {
+              const key = entries[0];
+              const value = entries[1];
+
+              value.key = key;
+
+              return value;
+            });
+          });
+          const descriptions = stats.reduce((ret, stat) => {
+            let category = ret.find((d) => d.category === stat.category);
+            if (!category) {
+              category = { category: stat.category, descriptions: [] };
+              ret.push(category);
+            }
+
+            let description = category.descriptions.find((d) => d.displayName === stat.displayName);
+            if (!description) {
+              description = { key: stat.key, displayName: stat.displayName, description: stat.description };
+              category.descriptions.push(description);
+            }
+
+            return ret;
+          }, [] as CategoryDescription[]);
+
+          resolve(descriptions);
+        })
+        .catch((reason) => {
+          this.logger.error(reason);
+          reject(reason);
+        });
+    });
   }
 
   getAllValueCacheDateMs(): Promise<string> {

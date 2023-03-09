@@ -7,12 +7,14 @@
   "pve-kills": "Pve kills",
   "pvp-kills": "Pvp kills",
   "last-seen": "Dernière fois",
+  "graph-label": "Graphique",
 
   "title-general": "Aperçu",
   "title-pve": "Pve",
   "title-darkZone": "Dark Zone",
   "title-conflictPvp": "Conflict Pvp",
   "title-kills": "Kills",
+  "title-null": "Bizarre",
 
   "erreur-501": "Erreur 501",
   "not-ye-implemented": "Non encore implémenté",

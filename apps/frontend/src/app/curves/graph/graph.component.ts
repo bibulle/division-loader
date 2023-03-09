@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/member-ordering */
-import { _isNumberValue } from '@angular/cdk/coercion';
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { CharacterStats, GraphTypeKey } from '@division-loader/apis';
+import { CharacterStats, GraphTypeKey, StatDescription } from '@division-loader/apis';
 import * as d3 from 'd3';
-import { NumberValue, timeHours } from 'd3';
+import { NumberValue } from 'd3';
 
 @Component({
   selector: 'division-loader-graph',
@@ -17,10 +17,11 @@ export class GraphComponent implements OnInit, OnChanges {
   @Input()
   graphType = GraphTypeKey.TIME;
 
+  @Input()
+  statName?: StatDescription;
+
   @ViewChild('chart', { static: true })
   private chartContainer: ElementRef | undefined;
-
-  statName: string | undefined;
 
   characters: Character[] = [];
   created = false;
@@ -154,20 +155,21 @@ export class GraphComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.created = false;
 
+    // console.log(`${this.statName} ${this.graphType}`);
     if (!this.statName) {
       switch (this.graphType) {
         case GraphTypeKey.TIME:
         default:
-          this.statName = 'timePlayed';
+          this.statName = { key: 'timePlayed', displayName: 'Time Played', description: '' };
           break;
         case GraphTypeKey.LEVEL:
-          this.statName = 'highestPlayerLevel';
+          this.statName = { key: 'highestPlayerLevel', displayName: 'Player Level', description: '' };
           break;
         case GraphTypeKey.PVE_KILLS:
-          this.statName = 'killsNpc';
+          this.statName = { key: 'killsNpc', displayName: 'NPC Kills', description: '' };
           break;
         case GraphTypeKey.PVP_KILLS:
-          this.statName = 'killsPvP';
+          this.statName = { key: 'killsPvP', displayName: 'PvP Kills', description: '' };
           break;
       }
     }
@@ -183,7 +185,9 @@ export class GraphComponent implements OnInit, OnChanges {
     // console.log('ngOnChanges');
     // console.log(changes);
 
-    if (changes['charactersStats']) {
+    if (changes['statName']) {
+      this.updateChart();
+    } else if (changes['charactersStats']) {
       this.updateChart();
     }
   }
@@ -230,7 +234,7 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   private updateChart(): void {
-    console.log('updateChart');
+    // console.log(`updateChart ${this.statName}`);
     if (!this.created || !this.chartContainer) {
       return;
     }
@@ -322,7 +326,7 @@ export class GraphComponent implements OnInit, OnChanges {
     const xAxis = d3.axisBottom(xScale).tickSizeInner(-this.height).tickSizeOuter(0).tickPadding(10).tickValues(resultTickValues).tickFormat(GraphComponent._multiFormat);
     const yAxis = d3.axisLeft(yScale).tickSizeInner(-this.width).tickSizeOuter(0).tickPadding(10);
 
-    if (this.statName === 'timePlayed') {
+    if (this.statName?.key === 'timePlayed') {
       yAxis.tickFormat(GraphComponent._multiFormatTimePlayed);
     }
 
@@ -337,7 +341,7 @@ export class GraphComponent implements OnInit, OnChanges {
     // this._translateService.get(Graph.Y_LABEL[this.graphType]).subscribe((text) => {
     //   yAxisLabel.text(text);
     // });
-    yAxisLabel.text(this.statName);
+    yAxisLabel.text(this.statName?.displayName);
 
     // ---------
     // create clip path
@@ -451,14 +455,14 @@ export class GraphComponent implements OnInit, OnChanges {
       });
 
     // create texts
-    const getTextBox = (selection: any) => {
-      console.log(selection);
-      console.log(this);
-      selection.each((d: any) => {
-        console.log(d);
-        // d.bbox = this.getBBox();
-      });
-    };
+    // const getTextBox = (selection: any) => {
+    //   console.log(selection);
+    //   console.log(this);
+    //   selection.each((d: any) => {
+    //     console.log(d);
+    //     // d.bbox = this.getBBox();
+    //   });
+    // };
 
     const texts = this.svg
       .selectAll('.text')
@@ -480,7 +484,7 @@ export class GraphComponent implements OnInit, OnChanges {
       .attr('dy', '.35em')
       .style('font-size', '0.7em')
       .html((d: Character) => this._getLabel(d))
-      .call((selection: any) => {
+      .call(() => {
         // console.log(selection);
         // console.log(this);
       });
@@ -536,7 +540,7 @@ export class GraphComponent implements OnInit, OnChanges {
           .style('z-index', 0)
           .style('top', this.height * 2 + 'px');
       })
-      .call((selection: any) => {
+      .call(() => {
         // console.log(selection);
         // console.log(selection.getBBox());
         // console.log(this);
@@ -593,7 +597,7 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   _getYMax(d: CharacterStats): number {
-    const attr: string = this.statName ? this.statName : 'timePlayed';
+    const attr: string = this.statName ? this.statName.key : 'timePlayed';
     const stat = (d.stats as any)[attr];
 
     return stat && stat.value ? stat.value : 0;
@@ -666,7 +670,7 @@ export class GraphComponent implements OnInit, OnChanges {
           periods: ['AM', 'PM'],
           days: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
           shortDays: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-          months: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+          months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
           shortMonths: ['Janv.', 'Févr.', 'Mars', 'Avr.', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
         });
       case 'en':

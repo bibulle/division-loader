@@ -75,6 +75,7 @@ export class CharacterStats {
 }
 
 export class Stat {
+  key?: string;
   rank: number | null = null;
   percentile: number | null = null;
   displayName = '';
@@ -84,4 +85,15 @@ export class Stat {
   value: number | null = null;
   displayValue: string | null = null;
   displayType = '';
+}
+
+export class CategoryDescription {
+  category = '';
+  descriptions: StatDescription[] = [];
+}
+
+export class StatDescription {
+  key = '';
+  displayName = '';
+  description = '';
 }

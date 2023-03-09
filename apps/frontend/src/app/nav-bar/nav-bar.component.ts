@@ -1,17 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, NgModule, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenu, MatMenuModule, MatMenuPanel } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { Version } from '@division-loader/apis';
-import { Subscription } from 'rxjs';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { NavBarService } from './nav-bar.service';
-import { MatMenuModule } from '@angular/material/menu';
-import { VersionService } from '../utils/version/version.service';
+import { CategoryDescription, Version } from '@division-loader/apis';
+import { TranslateModule } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { NotificationService } from '../utils/notification/notification.service';
+import { VersionService } from '../utils/version/version.service';
+import { NavBarService } from './nav-bar.service';
+
+interface Link {
+  path: string | null;
+  menu: MatMenuPanel | null;
+  label: string;
+  icon: string;
+  selected: boolean;
+}
 
 @Component({
   selector: 'division-loader-nav-bar',
@@ -19,11 +27,17 @@ import { NotificationService } from '../utils/notification/notification.service'
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit, OnDestroy {
-  links: { path: string; label: string; icon: string; iconType: string; selected: boolean }[] = [];
+  @ViewChild('graphMenu', { static: true })
+  graphMenu: MatMenu | null = null;
+
+  links: Link[] = [];
 
   version = new Version().version;
   updateNeeded = false;
   private _currentVersionChangedSubscription?: Subscription;
+
+  statDescriptions: CategoryDescription[] = [];
+  showCat: { [cat: string]: boolean } = {};
 
   loadingTimer = -1;
   private _currentLoadingStateSubscription?: Subscription;
@@ -33,7 +47,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
       // console.log(data.constructor.name);
       if (data instanceof NavigationEnd) {
         this.links.forEach((link) => {
-          link.selected = '/' + link.path === data.urlAfterRedirects;
+          link.selected = '/' + link.path === data.urlAfterRedirects || (!link.path && data.urlAfterRedirects.startsWith('/stats/'));
+          // console.log(`${link.path} <-> ${data.urlAfterRedirects} -> ${link.selected}`);
         });
       }
     });
@@ -52,6 +67,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.loadingTimer = loadingState;
     });
     this.calculateMenus();
+
+    this._navBarService.getStatsList().then((v) => {
+      this.statDescriptions = v;
+    });
   }
 
   ngOnDestroy(): void {
@@ -64,21 +83,34 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   private calculateMenus() {
-    const newLinks: { path: string; label: string; icon: string; iconType: string; selected: boolean }[] = [];
+    const newLinks: Link[] = [];
 
     this._router.config.forEach((obj) => {
       if (!obj.redirectTo && obj.data && obj.data['menu']) {
         newLinks.push({
           path: obj.path ? obj.path : '',
+          menu: null,
           label: obj.data['label'],
           icon: obj.data['icon'],
-          iconType: obj.data['iconType'],
           selected: false,
         });
       }
     });
+    // add the graph button
+    newLinks.push({
+      path: null,
+      menu: this.graphMenu,
+      label: 'graph-label',
+      icon: 'graph',
+      selected: false,
+    });
 
     this.links = newLinks;
+  }
+
+  toggleCategory(event: MouseEvent, category: string) {
+    this.showCat[category] = !this.showCat[category];
+    event.stopPropagation();
   }
 
   getIconAttr(name: string): string {
