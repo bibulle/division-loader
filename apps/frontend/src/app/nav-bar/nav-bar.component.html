@@ -14,7 +14,8 @@
           <div class="ml-10 flex items-baseline space-x-4">
             <button
               *ngFor="let link of links"
-              routerLink="{{ link.path }}"
+              [routerLink]="link.path"
+              [matMenuTriggerFor]="link.menu"
               class="px-3 py-2 rounded-md text-lg flex focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-primary-light"
               [class.text-primary-default]="link.selected"
               [class.fill-primary-default]="link.selected"
@@ -39,9 +40,6 @@
       <div class="hidden md:block">
         <!-- Menu horizontal droite -->
         <div class="ml-4 flex items-stretch md:ml-6">
-          <!-- <div matTooltip="{{ getAnimTooltip(loadingTimer) | translate }}">
-            <mat-icon svgIcon="bungie_anim"></mat-icon>
-          </div> -->
           <button mat-button id="nav-bar-reload" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}" color="accent">
             <svg class="h-8 w-8 fill-primary-default">
               <use xlink:href="assets/img/symbol-defs.svg#upgrade"></use>
@@ -95,42 +93,30 @@
         <span>{{ link.label | translate }}</span>
       </a>
     </div>
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <!-- <div matTooltip="{{ getAnimTooltip(loadingTimer) | translate }}">
-          <mat-icon svgIcon="bungie_anim"></mat-icon>
-        </div> -->
-        <a class="px-3 py-2 text-primary-light flex" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}">
-          <svg class="h-6 w-6 mr-2 fill-primary-light">
-            <use xlink:href="assets/img/symbol-defs.svg#upgrade"></use>
-          </svg>
-          <span>{{ 'update-needed-short' | translate }}</span>
-        </a>
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a class="px-3 py-2 text-primary-light flex" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}">
+        <svg class="h-6 w-6 mr-2 fill-primary-light">
+          <use xlink:href="assets/img/symbol-defs.svg#upgrade"></use>
+        </svg>
+        <span>{{ 'update-needed-short' | translate }}</span>
+      </a>
+    </div>
+  </mat-menu>
+  <!-- Menu graph -->
+  <mat-menu #graphMenu="matMenu" class="bg-primary-default shadow-md shadow-primary-dark border border-opacity-10 border-primary-dark">
+    <div *ngIf="statDescriptions && statDescriptions.length > 0" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <div *ngFor="let category of statDescriptions" class="px-0 py-2 text-primary-light flex flex-col" role="menuitem" tabindex="-1">
+        <div class="flex px-0" (click)="toggleCategory($event, category.category)">
+          <mat-icon role="img" *ngIf="!showCat[category.category]" >chevron_right</mat-icon>
+          <mat-icon role="img" *ngIf="showCat[category.category]" >expand_more</mat-icon>
+          <span>{{ 'title-' + category.category | translate }}</span>
+        </div>
+        <div *ngIf="showCat[category.category]">
+          <a *ngFor="let description of category.descriptions" routerLink="{{ '/stats/'+description.key }}" class="px-4 py-2 text-primary-light flex" role="menuitem" tabindex="-1">
+            <span>{{ description.displayName }}</span>
+          </a>
+        </div>
       </div>
+    </div>
   </mat-menu>
 </nav>
-<!-- <nav class="bg-background-dark sticky top-0 z-50 hidden">
-  <div>
-    <nav>
-      <a mat-button class="nav-bar-button title" routerLink="/" attr.aria-label="{{ 'title' | translate }}">
-        <span>{{ 'title' | translate }}</span
-        ><span class="version">{{ 'version' | translate }} {{ version }}</span>
-      </a>
-      <a mat-button class="nav-bar-hide-small app-button" color="{{ link.selected ? 'accent' : 'none' }}" *ngFor="let link of linksLeft" routerLink="{{ link.path }}">
-        <img *ngIf="link.iconType === 'img'" class="nav-img" src="{{ link.icon }}" alt="{{ link.label | translate }}" title="{{ link.label | translate }}" />
-        <i *ngIf="link.iconType === 'fas'" class="fas {{ link.icon }}" title="{{ link.label | translate }}"></i>
-        <mat-icon *ngIf="link.iconType === 'svgIcon'" svgIcon="{{ link.icon }}" title="{{ link.label | translate }}"></mat-icon>
-        <mat-icon *ngIf="link.iconType === 'icon'">{{ link.icon }}</mat-icon>
-        <span class="link-text">{{ link.label | translate }}</span>
-      </a>
-    </nav>
-  </div>
-  <div>
-    <div matTooltip="{{ getAnimTooltip(loadingTimer) | translate }}">
-      <mat-icon svgIcon="bungie_anim"></mat-icon>
-    </div>
-    <span class="version-small">{{ version }}</span>
-    <a mat-button id="nav-bar-reload" *ngIf="updateNeeded" (click)="update()" matTooltip="{{ 'update-needed' | translate }}" color="accent">
-      <mat-icon>cloud_upload</mat-icon>
-    </a>
-  </div>
-</nav> -->

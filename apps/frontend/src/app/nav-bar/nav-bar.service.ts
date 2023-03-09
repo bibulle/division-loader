@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiReturn, StatDescription } from '@division-loader/apis';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export enum LoadingState {
@@ -15,9 +17,9 @@ export class NavBarService {
   private loadingState = LoadingState.OFF;
   private loadingStateWaitingDate?: Date = undefined;
   private loadingStateLoadingDate?: Date = undefined;
-  timerId?: any;
+  timerId?: NodeJS.Timer;
 
-  constructor() {
+  constructor(private _http: HttpClient) {
     this.loadingSubject = new BehaviorSubject<number>(this._calculateLoadingState());
 
     this._launchInterval();
@@ -87,5 +89,14 @@ export class NavBarService {
     this.timerId = setInterval(() => {
       this.loadingSubject.next(this._calculateLoadingState());
     }, 10000);
+  }
+
+  getStatsList(): Promise<StatDescription[]> {
+    return new Promise<StatDescription[]>((resolve) => {
+      this._http.get<ApiReturn>('/api/stats/description').subscribe((data) => {
+        const descriptions = data.data as StatDescription[];
+        resolve(descriptions);
+      });
+    });
   }
 }

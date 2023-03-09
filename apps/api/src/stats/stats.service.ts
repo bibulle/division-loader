@@ -1,13 +1,12 @@
+import { ApiReturn, CharacterStats, StatDescription, Version } from '@division-loader/apis';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CronExpression, SchedulerRegistry } from '@nestjs/schedule';
-import { ApitrackerService } from './apitracker.service';
 import { CronJob } from 'cron';
-import { StatsDbService } from './stats-db.service';
-import { ApiReturn, CharacterStats, StatDescription, Version } from '@division-loader/apis';
-import { mkdirSync, rename, renameSync, statSync, writeFileSync } from 'fs';
+import { mkdirSync, renameSync, statSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { rejects } from 'assert';
+import { ApitrackerService } from './apitracker.service';
+import { StatsDbService } from './stats-db.service';
 
 @Injectable()
 export class StatsService {
@@ -84,7 +83,14 @@ export class StatsService {
         .findLastCharacterStats()
         .then((charStats) => {
           const stats = charStats.flatMap((char) => {
-            return Object.values(char.stats);
+            return Object.entries(char.stats).map((entries) => {
+              const key = entries[0];
+              const value = entries[1];
+
+              value.key = key;
+
+              return value;
+            });
           });
           const descriptions = stats.reduce((ret, stat) => {
             let category = ret.find((d) => d.category === stat.category);
@@ -95,7 +101,7 @@ export class StatsService {
 
             let description = category.descriptions.find((d) => d.displayName === stat.displayName);
             if (!description) {
-              description = { displayName: stat.displayName, description: stat.description };
+              description = { key: stat.key, displayName: stat.displayName, description: stat.description };
               category.descriptions.push(description);
             }
 
