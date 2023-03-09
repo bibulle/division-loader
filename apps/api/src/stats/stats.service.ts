@@ -1,4 +1,4 @@
-import { ApiReturn, CharacterStats, StatDescription, Version } from '@division-loader/apis';
+import { ApiReturn, CategoryDescription, CharacterStats, Version } from '@division-loader/apis';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CronExpression, SchedulerRegistry } from '@nestjs/schedule';
@@ -77,8 +77,8 @@ export class StatsService {
   async getCurrentValues(): Promise<CharacterStats[]> {
     return this._statsDbService.findLastCharacterStats();
   }
-  async getStatsDescription(): Promise<StatDescription[]> {
-    return new Promise<StatDescription[]>((resolve, reject) => {
+  async getStatsDescription(): Promise<CategoryDescription[]> {
+    return new Promise<CategoryDescription[]>((resolve, reject) => {
       this._statsDbService
         .findLastCharacterStats()
         .then((charStats) => {
@@ -106,7 +106,7 @@ export class StatsService {
             }
 
             return ret;
-          }, [] as StatDescription[]);
+          }, [] as CategoryDescription[]);
 
           resolve(descriptions);
         })
