@@ -7,7 +7,7 @@ export const StatsSchema = new Mongoose.Schema({
   displayCategory: String,
   category: String,
   description: String,
-  value: Number,
+  value: Mongoose.Schema.Types.Mixed,
   displayValue: String,
   displayType: String,
 });

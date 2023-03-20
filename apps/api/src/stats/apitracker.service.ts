@@ -175,7 +175,7 @@ class APITrackerStatObj {
   category: string;
   description: string;
   metadata: unknown;
-  value: number;
+  value: number | string;
   displayValue: string;
   displayType: string;
 }
@@ -1030,7 +1030,7 @@ const MOCKS: { [user: string]: APITrackerObj } = {
               category: 'general',
               description: null,
               metadata: {},
-              value: null,
+              value: 'Sharpshooter',
               displayValue: null,
               displayType: 'String',
             },

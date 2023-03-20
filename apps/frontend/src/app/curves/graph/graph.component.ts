@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { CharacterStats, GraphTypeKey, StatDescription } from '@division-loader/apis';
+import { CharacterStats, GraphTypeKey, Stat, StatDescription } from '@division-loader/apis';
 import * as d3 from 'd3';
 import { NumberValue } from 'd3';
 
@@ -598,9 +598,9 @@ export class GraphComponent implements OnInit, OnChanges {
 
   _getYMax(d: CharacterStats): number {
     const attr: string = this.statName ? this.statName.key : 'timePlayed';
-    const stat = (d.stats as any)[attr];
+    const stat = (d.stats as any)[attr] as Stat;
 
-    return stat && stat.value ? stat.value : 0;
+    return stat && stat.value && !isNaN(+stat.value) ? +stat.value : 0;
   }
 
   _getLabel(d: Character): string {

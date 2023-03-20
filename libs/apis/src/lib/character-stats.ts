@@ -82,7 +82,7 @@ export class Stat {
   displayCategory = '';
   category = '';
   description: string | null = null;
-  value: number | null = null;
+  value: number | string | null = null;
   displayValue: string | null = null;
   displayType = '';
 }

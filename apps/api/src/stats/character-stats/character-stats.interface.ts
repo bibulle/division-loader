@@ -83,7 +83,7 @@ export interface IStat {
   category: string;
   description: string;
   // "metadata": {},
-  value: number;
+  value: number | string;
   displayValue: string;
   displayType: string;
 }
