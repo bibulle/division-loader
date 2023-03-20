@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/bibulle/division-loader/compare/v0.5.0...v0.6.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* stat value can be a string (specialization) ([fbef1a1](https://github.com/bibulle/division-loader/commit/fbef1a1c7ee23209c84b413e5274e7d49691b2ba))
+
 ## [0.5.0](https://github.com/bibulle/division-loader/compare/v0.4.1...v0.5.0) (2023-03-09)
 
 
