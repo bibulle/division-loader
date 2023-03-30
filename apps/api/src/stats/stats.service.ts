@@ -75,7 +75,18 @@ export class StatsService {
   }
 
   async getCurrentValues(): Promise<CharacterStats[]> {
-    return this._statsDbService.findLastCharacterStats();
+    return this._statsDbService
+      .findLastCharacterStats()
+      .then((stats) => {
+        for (let i = 0; i < stats.length; i++) {
+          const stat = stats[i];
+          this._fillStats(stat);
+        }
+        return Promise.resolve(stats);
+      })
+      .catch((reason) => {
+        return Promise.reject(reason);
+      });
   }
   async getStatsDescription(): Promise<CategoryDescription[]> {
     return new Promise<CategoryDescription[]>((resolve, reject) => {
@@ -83,7 +94,7 @@ export class StatsService {
         .findLastCharacterStats()
         .then((charStats) => {
           const stats = charStats.flatMap((char) => {
-            return Object.entries(char.stats).map((entries) => {
+            return Object.entries(this._fillStats(char).stats).map((entries) => {
               const key = entries[0];
               const value = entries[1];
 
@@ -130,9 +141,25 @@ export class StatsService {
     mkdirSync(dirname(StatsService.CACHE_PATH_ALL), { recursive: true });
 
     const allValues = await this._statsDbService.findAllCharacterStats();
+    allValues.forEach((stats) => {
+      this._fillStats(stats);
+    });
     const data: ApiReturn = { data: allValues, version: new Version() };
 
     writeFileSync(`${StatsService.CACHE_PATH_ALL}.tmp`, JSON.stringify(data));
     renameSync(`${StatsService.CACHE_PATH_ALL}.tmp`, StatsService.CACHE_PATH_ALL);
+  }
+
+  private _fillStats(srcStats: CharacterStats): CharacterStats {
+    srcStats.stats.levelPlus = { ...srcStats.stats.highestPlayerLevel };
+
+    if (srcStats.stats.levelPlus.value === 30) {
+      srcStats.stats.levelPlus = { ...srcStats.stats.latestGearScore };
+    }
+
+    srcStats.stats.levelPlus.displayName = 'Level+';
+
+    // this.logger.debug(JSON.stringify(srcStats, null, 2));
+    return srcStats;
   }
 }

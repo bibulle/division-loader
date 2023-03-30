@@ -15,6 +15,7 @@ export class CharacterStats {
     userId: 0,
   };
   stats = {
+    levelPlus: new Stat(),
     timePlayed: new Stat(),
     killsPvP: new Stat(),
     killsNpc: new Stat(),

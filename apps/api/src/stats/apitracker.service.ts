@@ -1,4 +1,4 @@
-import { CharacterStats } from '@division-loader/apis';
+import { CharacterStats, Stat } from '@division-loader/apis';
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -58,7 +58,7 @@ export class ApitrackerService {
     result.userId = data.data.platformInfo.platformUserIdentifier;
     result.platformInfo = data.data.platformInfo;
     result.userInfo = data.data.userInfo;
-    result.stats = data.data.segments[0].stats;
+    result.stats = { ...data.data.segments[0].stats, levelPlus: new Stat() };
 
     if (this._configService.get<boolean>('USE_RANDOM_TIME_PLAYED', false)) {
       this.logger.warn('Use of random time played !!');
@@ -1114,8 +1114,8 @@ const MOCKS: { [user: string]: APITrackerObj } = {
               category: 'pve',
               description: null,
               metadata: {},
-              value: 23,
-              displayValue: '23',
+              value: 233,
+              displayValue: '233',
               displayType: 'Number',
             },
             highestPlayerLevel: {
@@ -1126,8 +1126,8 @@ const MOCKS: { [user: string]: APITrackerObj } = {
               category: 'pve',
               description: null,
               metadata: {},
-              value: 24,
-              displayValue: '24',
+              value: 30,
+              displayValue: '30',
               displayType: 'Number',
             },
             xPPve: {

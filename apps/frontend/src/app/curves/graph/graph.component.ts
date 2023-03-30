@@ -163,7 +163,7 @@ export class GraphComponent implements OnInit, OnChanges {
           this.statName = { key: 'timePlayed', displayName: 'Time Played', description: '' };
           break;
         case GraphTypeKey.LEVEL:
-          this.statName = { key: 'highestPlayerLevel', displayName: 'Player Level', description: '' };
+          this.statName = { key: 'levelPlus', displayName: 'Player Level+', description: '' };
           break;
         case GraphTypeKey.PVE_KILLS:
           this.statName = { key: 'killsNpc', displayName: 'NPC Kills', description: '' };
