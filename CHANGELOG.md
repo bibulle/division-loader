@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/bibulle/division-loader/compare/v0.6.1...v0.6.2) (2023-04-04)
+
+
+### Features
+
+* add cache for current values ([daeeb87](https://github.com/bibulle/division-loader/commit/daeeb87c405103d99b1a85e3c47bc892a4c512ed))
+
 ### [0.6.1](https://github.com/bibulle/division-loader/compare/v0.6.0...v0.6.1) (2023-03-30)
 
 

@@ -49,6 +49,7 @@ export class HomeService {
 
       this._http.get<ApiReturn>('/api/stats/current').subscribe((data) => {
         this._stats = data.data as CharacterStats[];
+        console.log(this._stats);
         this._statsSubject.next(this._stats.sort((a, b) => a.userId.localeCompare(b.userId)));
 
         setTimeout(() => {
