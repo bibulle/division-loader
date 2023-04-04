@@ -1,9 +1,9 @@
 import { ApiReturn, CategoryDescription, CharacterStats, Version } from '@division-loader/apis';
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, NotImplementedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CronExpression, SchedulerRegistry } from '@nestjs/schedule';
 import { CronJob } from 'cron';
-import { mkdirSync, renameSync, statSync, writeFileSync } from 'fs';
+import { mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 import { ApitrackerService } from './apitracker.service';
 import { StatsDbService } from './stats-db.service';
@@ -13,6 +13,7 @@ export class StatsService {
   private readonly logger = new Logger(StatsService.name);
 
   private static readonly CACHE_PATH_ALL = 'data/all-stats.json';
+  private static readonly CACHE_PATH_CURRENT = 'data/current-stats.json';
 
   private static readonly CRON_STATS_RECURRING_DEFAULT = CronExpression.EVERY_10_MINUTES;
   private static cronStatsRecurrent = StatsService.CRON_STATS_RECURRING_DEFAULT;
@@ -60,9 +61,14 @@ export class StatsService {
         await this.apitrackerService
           .getStats(player)
           .then((stats) => {
-            this._statsDbService.save(stats).catch((reason) => {
-              this.logger.error(reason);
-            });
+            this._statsDbService
+              .save(stats)
+              .then(() => {
+                this.saveCurrentValueInCache(stats);
+              })
+              .catch((reason) => {
+                this.logger.error(reason);
+              });
           })
           .catch((reason) => {
             this.logger.error(reason);
@@ -136,6 +142,14 @@ export class StatsService {
     const stats = statSync(StatsService.CACHE_PATH_ALL);
     return stats ? Promise.resolve(StatsService.CACHE_PATH_ALL) : Promise.reject(`File not found : '${StatsService.CACHE_PATH_ALL}'`);
   }
+  getCurrentValueCacheDateMs(): Promise<string> {
+    const stats = statSync(StatsService.CACHE_PATH_CURRENT);
+    return stats ? Promise.resolve(stats.mtimeMs.toString()) : Promise.reject(`File not found : '${StatsService.CACHE_PATH_CURRENT}'`);
+  }
+  getCurrentValueCachePath(): Promise<string> {
+    const stats = statSync(StatsService.CACHE_PATH_CURRENT, { throwIfNoEntry: false });
+    return stats ? Promise.resolve(StatsService.CACHE_PATH_CURRENT) : Promise.reject(`File not found : '${StatsService.CACHE_PATH_CURRENT}'`);
+  }
   private async _calcCache() {
     this.logger.debug('_calcCache');
     mkdirSync(dirname(StatsService.CACHE_PATH_ALL), { recursive: true });
@@ -146,7 +160,7 @@ export class StatsService {
     });
     const data: ApiReturn = { data: allValues, version: new Version() };
 
-    writeFileSync(`${StatsService.CACHE_PATH_ALL}.tmp`, JSON.stringify(data));
+    writeFileSync(`${StatsService.CACHE_PATH_ALL}.tmp`, JSON.stringify(data), 'utf8');
     renameSync(`${StatsService.CACHE_PATH_ALL}.tmp`, StatsService.CACHE_PATH_ALL);
   }
 
@@ -161,5 +175,30 @@ export class StatsService {
 
     // this.logger.debug(JSON.stringify(srcStats, null, 2));
     return srcStats;
+  }
+
+  async saveCurrentValueInCache(stats: CharacterStats): Promise<void> {
+    // this.logger.debug(JSON.stringify(stats,null,2));
+
+    let values: CharacterStats[] = [];
+
+    const path = await this.getCurrentValueCachePath().catch((reason) => {
+      this.logger.warn(reason);
+    });
+
+    if (path) {
+      const old = JSON.parse(readFileSync(path, 'utf8')) as ApiReturn;
+      values = old.data as CharacterStats[];
+    }
+
+    values = values.filter((v) => v.userId !== stats.userId);
+    values.push(stats);
+
+    const ret = {
+      version: new Version(),
+      data: values,
+    };
+    writeFileSync(`${StatsService.CACHE_PATH_CURRENT}.tmp`, JSON.stringify(ret, null, 2), 'utf8');
+    renameSync(`${StatsService.CACHE_PATH_CURRENT}.tmp`, StatsService.CACHE_PATH_CURRENT);
   }
 }
