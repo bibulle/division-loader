@@ -296,7 +296,20 @@ export class GraphComponent implements OnInit, OnChanges {
     const xScale = d3.scaleTime().domain([dateMin.getTime(), new Date()]).range([0, this.width]);
 
     const yMin = d3.min(allData, (d) => +this._getYMax(d));
-    const yMax = d3.max(allData, (d) => +this._getYMax(d));
+    let yMax = d3.max(allData, (d) => +this._getYMax(d));
+
+    if (this.statName && this.statName.key === 'levelPlus') {
+      let _yMax = 0;
+      this.characters.forEach((c) => {
+        if (this._getYMax(c.values[c.values.length - 1]) > _yMax) {
+          _yMax = this._getYMax(c.values[c.values.length - 1]);
+        }
+      });
+      if (_yMax <= 40) {
+        yMax = 50;
+      }
+    }
+
     const yScale = d3
       .scalePow()
       // .exponent(Graph.POW_VALUES[this.graphType])
