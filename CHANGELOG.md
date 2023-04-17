@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/bibulle/division-loader/compare/v0.6.2...v0.6.3) (2023-04-17)
+
+
+### Features
+
+* add second step of levelPlus ([443bc22](https://github.com/bibulle/division-loader/commit/443bc2292ace3441fd600e4941a1f9ea6edb0851))
+* add second step of levelPlus ([8396b77](https://github.com/bibulle/division-loader/commit/8396b77e8988f08b00c193bd9285701803ea484d))
+
 ### [0.6.2](https://github.com/bibulle/division-loader/compare/v0.6.1...v0.6.2) (2023-04-04)
 
 
